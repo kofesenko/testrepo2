@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "cicd_bucket" {
 }
 
 resource "aws_codestarconnections_connection" "github" {
-  name          = "github"
+  name          = "gh"
   provider_type = "GitHub"
 }
 
@@ -27,16 +27,16 @@ resource "aws_codepipeline" "python_app_pipeline" {
 
     action {
       category = "Source"
-      name = "Source"
-      owner     = "AWS"
-      provider  = "CodeStarSourceConnection"
-      version   = "1"
+      name     = "Source"
+      owner    = "AWS"
+      provider = "CodeStarSourceConnection"
+      version  = "1"
       output_artifacts = [
         "SourceArtifact",
       ]
       configuration = {
-        FullRepositoryId = var.ghrepo
-        BranchName       = var.python_project_repository_branch
+        FullRepositoryId = "kofesenko/testrepo2"
+        BranchName       = "main"
         ConnectionArn    = aws_codestarconnections_connection.github.arn
       }
     }
