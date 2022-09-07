@@ -35,8 +35,8 @@ resource "aws_codepipeline" "python_app_pipeline" {
         "SourceArtifact",
       ]
       configuration = {
-        FullRepositoryId = "kofesenko/testrepo2"
-        BranchName       = "main"
+        FullRepositoryId = var.ghrepo
+        BranchName       = var.python_project_repository_branch
         ConnectionArn    = aws_codestarconnections_connection.github.arn
       }
     }

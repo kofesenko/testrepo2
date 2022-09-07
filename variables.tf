@@ -44,5 +44,5 @@ variable "image_tag" {
 }
 
 variable "ghrepo" {
-  default = "kofesenko/testrepo2.git"
+  default = "kofesenko/testrepo2"
 }
